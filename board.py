@@ -13,14 +13,14 @@ class Board:
         if column == self.size:
             return True
 
-        for i in range(self.size):
-            if self.__is_safe(i, column):
-                self.board[i][column] = QUEEN
+        for row in range(self.size):
+            if self.__is_safe(row, column):
+                self.board[row][column] = QUEEN
 
                 if self.solve_n_queens(column + 1):
                     return True
                 
-                self.board[i][column] = EMPTY_PLACE   
+                self.board[row][column] = EMPTY_PLACE   
 
         return False     
     
