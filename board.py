@@ -31,18 +31,13 @@ class Board:
             print()
         
     def __is_safe(self, row, column) -> bool:
-        return self.__is_safe_row(row) \
-            and self.__is_safe_column(column) \
+        return self.__is_safe_row(row, column) \
             and self.__is_safe_up_anti_diagonal(row, column) \
             and self.__is_safe_low_anti_diagonal(row, column)
            
-    def __is_safe_row(self, row) -> bool:
-        row = [self.board[row][j] for j in range(self.size)]
+    def __is_safe_row(self, row, column) -> bool:
+        row = [self.board[row][j] for j in range(column)]
         return all([elt == EMPTY_PLACE for elt in row])
-
-    def __is_safe_column(self, column) -> bool:
-        column = [self.board[i][column] for i in range(self.size)]
-        return all([elt == EMPTY_PLACE for elt in column])
 
     def __is_safe_up_anti_diagonal(self, row, column) -> bool:
         for i, j in zip(range(row, -1, -1), range(column, -1, -1)):
