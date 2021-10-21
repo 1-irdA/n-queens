@@ -5,6 +5,6 @@ if __name__ == '__main__':
         nb_queens= int(input("Input an even number greater or equal than 4 : ")) 
         board = Board(nb_queens)
         board.solve_n_queens(0)
-        board.display()
+        print(board)
     except ValueError:
         print("Needs an even integer greater or equal than 4")

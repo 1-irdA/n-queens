@@ -7,7 +7,13 @@ class Board:
         if size < 4 or size % 2 != 0:
             raise ValueError
         self.size = size
-        self.board = [[EMPTY_PLACE for i in range(self.size)] for j in range(self.size)]
+        self.board = [[EMPTY_PLACE for _ in range(self.size)] for _ in range(self.size)]
+
+    def __repr__(self) -> str:
+        for i in range(self.size):
+            for j in range(self.size):
+                print(self.board[i][j], end=' ')
+            print()
 
     def solve_n_queens(self, column) -> bool:
         if column == self.size:
@@ -23,12 +29,6 @@ class Board:
                 self.board[row][column] = EMPTY_PLACE   
 
         return False     
-    
-    def display(self):
-        for i in range(self.size):
-            for j in range(self.size):
-                print(self.board[i][j], end=' ')
-            print()
         
     def __is_safe(self, row, column) -> bool:
         return self.__is_safe_row(row, column) \
