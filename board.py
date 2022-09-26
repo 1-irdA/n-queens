@@ -10,10 +10,14 @@ class Board:
         self.board = [[EMPTY_PLACE for _ in range(self.size)] for _ in range(self.size)]
 
     def __repr__(self) -> str:
+        res = ''
+        
         for i in range(self.size):
             for j in range(self.size):
-                print(self.board[i][j], end=' ')
-            print()
+                res += self.board[i][j] + ' '
+            res += '\n'
+
+        return res
 
     def solve_n_queens(self, column) -> bool:
         if column == self.size:
